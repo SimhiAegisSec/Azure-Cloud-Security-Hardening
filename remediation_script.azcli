@@ -1,0 +1,17 @@
+# 1. Disable Public Network Access (Isolate the account)
+az storage account update \
+    --name insecurestorage1 \
+    --resource-group RG-SC-Proj1 \
+    --public-network-access Disabled
+
+# 2. Disable Shared Key Access (Force Entra ID/RBAC)
+az storage account update \
+    --name insecurestorage1 \
+    --resource-group RG-SC-Proj1 \
+    --allow-shared-key-access false
+
+# 3. Enforce Modern Encryption (TLS 1.2)
+az storage account update \
+    --name insecurestorage1 \
+    --resource-group RG-SC-Proj1 \
+    --min-tls-version TLS1_2
